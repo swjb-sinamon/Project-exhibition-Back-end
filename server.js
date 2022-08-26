@@ -51,7 +51,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 
 app.get('/', (request, response) => {
-    response.render('main')
+    response.render('main', {data:data[0]})
 })
 
 app.get('/admin', async(request, response) => {
