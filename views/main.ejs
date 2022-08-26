@@ -33,96 +33,18 @@
         </a>
       </div>
       <div class="project_card">
-        <a href="/ndividualworks">
-          <div class="project_box">
-            <div class="img_box">
-              <img
-                src="/img/photo1.avif">
-              <h2 class="title">프로젝트</h2>
-              <p class="subheading">수원정보과학고등학교 IT 소프트웨어과 자율 동아리 수정과 sinamon</p>
+        <% for(let i = 0; i < data.length; i++) { %>
+          <a href="/ndividualworks">
+            <div class="project_box">
+              <div class="img_box">
+                <img
+                  src="/img/uploads/<%= data.filename.split(',')[0] %>">
+                <h2 class="title"><%= data[i].title %></h2>
+                <p class="subheading"><%= data[i].content %></p>
+              </div>
             </div>
-          </div>
-        </a>
-        <a href="/ndividualworks">
-          <div class="project_box">
-            <div class="img_box">
-              <img
-                src="/img/photo2.avif">
-              <h2 class="title">프로젝트</h2>
-              <p class="subheading">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-          </div>
-        </a>
-        <a href="/ndividualworks">
-          <div class="project_box">
-            <div class="img_box">
-              <img
-                src="/img/photo1.avif">
-              <h2 class="title">프로젝트</h2>
-              <p class="subheading">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-          </div>
-        </a>
-        <a href="/ndividualworks">
-          <div class="project_box">
-            <div class="img_box">
-              <img
-                src="/img/photo3.avif">
-              <h2 class="title">프로젝트</h2>
-              <p class="subheading">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="year-btn">
-        <a href="/yearworks">
-          <button class="year-text"></button>
-          <span class="material-symbols-outlined right btn">
-            <i class="fa-solid fa-angle-right"></i>
-          </span>
-        </a>
-      </div>
-      <div class="project_card">
-        <a href="/ndividualworks">
-          <div class="project_box">
-            <div class="img_box">
-              <img
-                src="/img/photo3.avif">
-              <h2 class="title">프로젝트</h2>
-              <p class="subheading">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-          </div>
-        </a>
-        <a href="/ndividualworks">
-          <div class="project_box">
-            <div class="img_box">
-              <img
-                src="/img/photo1.avif">
-              <h2 class="title">프로젝트</h2>
-              <p class="subheading">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-          </div>
-        </a>
-        <a href="/ndividualworks">
-          <div class="project_box">
-            <div class="img_box">
-              <img
-                src="/img/photo2.avif">
-              <h2 class="title">프로젝트</h2>
-              <p class="subheading">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-          </div>
-        </a>
-        <a href="/ndividualworks">
-          <div class="project_box">
-            <div class="img_box">
-              <img
-                src="/img/photo1.avif">
-              <h2 class="title">프로젝트</h2>
-              <p class="subheading">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-          </div>
-        </a>
+          </a>
+        <%} %>
       </div>
     </div>
   </div>
