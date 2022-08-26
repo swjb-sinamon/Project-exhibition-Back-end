@@ -1,0 +1,74 @@
+<%-include('header.ejs')%>
+        <link rel="stylesheet" href="/css/ndividualworks.css">
+    </head>
+    <body>
+        <header>
+            <div class="back">
+                <div class="box">
+                    <a href="/yearworks">
+                        <i class="fa-solid fa-chevron-left" style="margin-right: 15px;"></i>
+                        <h2 style="margin: 0;">작품 보기</h2>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <div class="contents">
+            <div class="works">
+                <h1><%= data.title %></h1>
+                <p class="description">
+                    <%= data.content %>
+                </p>
+                <div class="pic-box">
+                    <img src="/img/uploads/<%= data.filename.split(',')[0] %>">
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="box">
+                <div class="info">
+                    <h4>만든 사람</h4>
+                    <% for(let i = 0; i < data.namescnum.split(',').length; i++) { %>
+                        <p><%= data.namescnum.split(',')[i] %></p>
+                    <% } %>
+                </div>
+                <div class="info">
+                    <h4>github</h4>
+                    <p><%= data.git %></p>
+                </div>
+                <div class="info">
+                    <h4>e-mail</h4>
+                    <p><%= data.email %></p>
+                </div>
+                <div class="info">
+                    <h4>제작일</h4>
+                    <p><%= data.enddate %></p>
+                </div>
+            </div>
+        </footer>
+        <ul id="menu-bar" style="padding: 0; margin: 0;">
+            <li>
+              <span class="material-symbols-outlined">
+                <i class="fa-solid fa-circle-plus"></i>
+              </span>
+              <a href="/uploadworks">작품 업로드</a>
+            </li>
+            <li>
+              <span class="material-symbols-outlined">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+              </span>
+              <a href="/adminLogin">관리자 페이지</a>
+            </li>
+            <li class="search">
+              <p style="margin: 0;">작품검색</p>
+              <input type="text" id="search" onkeyup="filter()">
+            </li>
+        </ul>
+        <div class="bottom-button">
+            <div class="material-symbols-outlined">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+        </div>
+        <script src="/js/ndividualworks.js"></script>
+    </body>
+</html>

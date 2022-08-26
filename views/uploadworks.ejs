@@ -1,0 +1,71 @@
+<%-include('header.ejs')%>
+    <link rel="stylesheet" href="/css/uploadworks.css">
+</head>
+
+<body>
+    <div class="header">
+        <a href="/">
+            <i class="fa-solid fa-chevron-left" style="margin-right: 15px;"></i>
+            <h3>작품 업로드</h3>
+        </a>
+    </div>
+    <form class="work" action="/upload" method="post" enctype="multipart/form-data">
+        <h1>작품정보</h1>
+
+        <div class="mb-3">
+            <label for="title" class="fomr-label">제목</label>
+            <input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력하세요." required>
+        </div>
+
+        <div class="mb-3">
+            <label for="explain">작품 설명</label>
+            <textarea type="text" class="form-control" rows="5" name="content" id="explain" placeholder="작품에 대한 설명을 입력하세요." required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="file" class="form-label">첨부 파일</label>
+            <input type="file" name="file" id="file" class="form-control" accept="image/jpg, image/png, image/jpeg" multiple required>
+        </div>
+
+        <div class="mb-3">
+            <label for="date" class="form-label">완성 날짜</label>
+            <input type="date" class="form-control" name="date" id="date" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="tag" class="form-label">#태그입력</label>
+            <input type="text" id="tag" name="tag" class="form-control" placeholder="태그는 ,로 구분하여 입력해주세요.">
+        </div>
+
+        <h1>작성자 정보</h1>
+
+        <div class="mb-3">
+            <label for="name-id" class="form-label">이름,학번(다섯자리)</label>
+            <input type="text" name="scname" id="name-id" class="form-control" placeholder="이름(학번) 형식으로 입력해주세요. 복수 입력시 ,로 구분해주세요" required>
+        </div>
+        <div class="email mb-3">
+            <label for="emailhead" class="form-label">이메일 주소</label>
+            <div>
+                <input type="text" id="emailhead" name="emailhead" class="form-control" placeholder="이메일 주소를 입력해주세요" required>
+                <p>@</p>
+                <select name="emailtail" id="emailtail" class="form-select">
+                    <option value="gmail.com" selected>gmail.com</option>
+                    <option value="naver.com">naver.com</option>
+                    <option value="daum.net">daum.net</option>
+                    <option value="nate.com">nate.com</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="github" class="form-label" id="git">git</label>
+            <input type="text" id="github" name="git" class="form-control" placeholder="github 주소를 입력해주세요" required>
+        </div>
+
+        <div class="complete">
+            <button>완료</button>
+        </div>
+    </form>
+    <script src="/js/uploadworks.js"></script>
+</body>
+</html>
