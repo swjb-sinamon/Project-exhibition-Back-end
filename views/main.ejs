@@ -1,0 +1,76 @@
+<%-include('header.ejs')%>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body class="body">
+  <header>
+    <a href="#">
+      <img style="object-fit: cover;" src="/img/수정과 포장 라벨.jpg">
+    </a>
+  </header>
+  <div class="main">
+    <ul class="slide">
+      <li>
+        <a href="/ndividualworks">
+          <img class="img" src="/img/photo1.avif">
+        </a>
+      </li>
+      <li>
+        <a href="/ndividualworks">
+          <img class="img" src="/img/photo2.avif">
+        </a>
+      </li>
+      <li>
+        <a href="/ndividualworks">
+          <img class="img" src="/img/photo3.avif">
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="msg">
+    <ul class="msglist">
+      <li><p>연도별로 선,후배 친구들의 작품을 감상하세요</p></li>
+      <li><p>수업시간, 개인작업, 동아리 활동으로 만든 작품을 전시해보세요</p></li>
+    </ul>
+  </div>
+  <div class="yaer mb-5">
+    <div class="contents">
+      <div class="year-btn">
+        <a href="/yearworks">
+          <button class="year-text"></button>
+          <span class="material-symbols-outlined right btn">
+            <i class="fa-solid fa-angle-right"></i>
+          </span>
+        </a>
+      </div>
+      <div class="project_card">
+          
+      </div>
+    </div>
+  </div>
+  <ul id="menu-bar" style="padding: 0; margin: 0;">
+    <li>
+      <span class="material-symbols-outlined">
+        <i class="fa-solid fa-circle-plus"></i>
+      </span>
+      <a href="/uploadworks">작품 업로드</a>
+    </li>
+    <li>
+      <span class="material-symbols-outlined">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+      </span>
+      <a href="/adminLogin">관리자 페이지</a>
+    </li>
+    <li class="search">
+      <p style="margin: 0;">작품검색</p>
+      <input type="text" id="search" onkeyup="filter()">
+    </li>
+  </ul>
+  <div class="bottom-button">
+    <div class="material-symbols-outlined">
+      <i class="fa-solid fa-plus"></i>
+    </div>
+  </div>
+  <script src="/js/main.js"> </script>
+</body>
+</html>

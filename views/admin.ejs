@@ -1,0 +1,52 @@
+<%-include('header.ejs')%>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <div class="yaer">
+        <header>
+            <a href="/">
+                <i class="fa-solid fa-chevron-left"></i>
+            </a>
+            
+            <h1 class="year text-center">2022</h1>
+
+            <div class="search-box">
+                <input type="text" id="search" onkeyup="filter()">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="project_card">
+                <% for(let i = 0; i < data.length; i++) { %>
+                    <div class="project_box">
+                        <div class="img_box">
+                            <img src="/img/uploads/<%= data[i].filename.split(',')[0] %>">
+                            <h2 class="title"><%= data[i].title %></h2>
+                            <div class="fix-box">
+                                <% if(data[i].status == 'x') { %>
+                                    <button data-id="<%= data[i].id %>" class="delete">삭제</button>
+                                    <button data-id="<%= data[i].id %>" class="fix">수락</button>
+                                <% } else { %>
+                                    <button data-id="<%= data[i].id %>" class="delete">삭제</button>
+                                    <button class="accepted">수락됨</button>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+
+                <div class="msg_box">
+                    <p>정말로 삭제하시겠습니까?</p>
+                    <div class="button-box">
+                        <button class="yes">예</button>
+                        <button class="no">아니요</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="/js/admin.js"></script>
+</body>
+</html>

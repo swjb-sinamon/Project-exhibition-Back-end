@@ -1,0 +1,40 @@
+<%-include('header.ejs')%>
+    <link rel="stylesheet" href="/css/yearworks.css">
+</head>
+
+<body>
+    <div class="yaer">
+        <header>
+            <a href="/" class="text-center">
+                <i class="fa-solid fa-chevron-left" style="margin-right: 15px;"></i>
+            </a>
+
+            <h1 class="year text-center"><%= year %></h1>
+
+            <div class="search-box">
+                <div class="search">
+                    <input type="text" id="search" onkeyup="filter()">
+                    <span class="material-symbols-outlined"><i class="fa-solid fa-magnifying-glass"></i></span>
+                </div>
+            </div>
+        </header>
+
+        <div class="contents">
+            <div class="project_card">
+                <% for(let i = 0; i < data.length; i++) { %>
+                    <a href="/ndividualworks?id=<%= data[i].id %>">
+                        <div class="project_box">
+                            <div class="img_box">
+                                <img src="/img/uploads/<%= data[i].filename.split(',')[0] %>">
+                            </div>
+                            <h2 class="title"><%= data[i].title %></h2>
+                            <p class="subheading"><%= data[i].content %></p>
+                        </div>
+                    </a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <script src="/js/yearworks.js"></script>
+</body>
+</html>
