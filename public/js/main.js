@@ -1,18 +1,3 @@
-const yearText = document.querySelectorAll('.year-btn');
-const yearBtn = document.querySelector('.year-text');
-
-
-const data = new Date();
-const year = data.getFullYear();
-let i = 0;
-
-yearText.forEach(e => {
-  e.className += ` ${year-i}`;
-  yearBtn.innerHTML = year-i;
-  yearBtn.className += ` ${year-i}`;
-  i++;
-});
-
 const bottomButton = document.querySelector('.bottom-button');
 let count = 0;
 let j = 0;
@@ -85,57 +70,38 @@ $(document).ready(function(){
   },2000);
 })
 
+const year = document.querySelectorAll('.yaer');
+
+year.forEach((x) => {
+    if(x.classList[2] == 2022) {
+        x.style.display = "block";
+    }
+})
 
 $.ajax({
-  url:'/getAll',
-  type: 'post',
-  dataType:'json',
-  success: data => {
-    console.log(data)
-    let box = $('.project_card')
-    console.log(box)
-    let contents = $('.body')
-    console.log(contents)
-
-    data.data.forEach(item => {
-      yearText.forEach( x => {
-        if(x.classList[x.classList.length-1] == item.endyear){
-          let div = `<a href="/ndividualworks?id=${item.id}">
-                        <div class="project_box">
-                          <div class="img_box">
-                            <img src="/img/uploads/${item.filename.split(',')[0]}">
-                            <h2 class="title">${item.title}</h2>
-                            <p class="subheading">${item.content}</p>
-                          </div>
-                        </div>
-                      </a>`
-        box.append(div)
-        } else {
-          let div = `<div class="yaer mb-5 ${item.endyear}">
-          <div class="contents">
-            <div class="year-btn">
-              <a href="/yearworks?year=${item.endyear}">
-                <button class="year-text">${item.endyear}</button>
-                <span class="material-symbols-outlined right btn">
-                  <i class="fa-solid fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-            <div class="project_card">
-              <a href="/ndividualworks?id=${item.id}">
-              <div class="project_box">
-                <div class="img_box">
-                  <img src="/img/uploads/${item.filename.split(',')[0]}">
-                  <h2 class="title">${item.title}</h2>
-                  <p class="subheading">${item.content}</p>
+    url:'/getAll',
+    type: 'post',
+    dataType:'json',
+    success: data => {
+      console.log(data.data)
+      data.data.forEach((x) => {
+        year.forEach((e) => {
+            let box = $(`.${e.classList[2]} .project_card`);
+            if(x.endyear == e.classList[2]){
+                let div = `<a href="/ndividualworks?id=${x.id}">
+                <div class="project_box">
+                    <div class="img_box">
+                    <img src="/img/uploads/${x.filename.split(',')[0]}">
+                    <h2 class="title">${x.title}</h2>
+                    <p class="subheading">${x.content}</p>
+                    </div>
                 </div>
-              </div>
-              </a>
-            </div>
-          </div>`
-          contents.append(div);
-        }
+                </a>`
+                box.append(div);
+                console.dir(box[0]);
+                e.style.display = "block";
+            }
+        })
       })
-    })
-  }
-})
+    }
+  })

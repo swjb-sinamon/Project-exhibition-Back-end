@@ -61,6 +61,7 @@ img {
 .yaer {
   width: 80vw;
   margin: 0 auto;
+  display: none;
 }
 
 .contents{
