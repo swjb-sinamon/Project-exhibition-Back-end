@@ -84,8 +84,12 @@ jobs:
           server: ${{ secrets.FTP_HOST_PRODUCTION }}
           username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
           password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
 #           local-dir: ./webtoon/
-          git-ftp-args: --insecure
+#           git-ftp-args: --insecure
 
 #       - name: Discord Alert Success
 #         uses: sarisia/actions-status-discord@v1
