@@ -90,8 +90,7 @@ jobs:
             **/node_modules/**
 #           local-dir: ./webtoon/
 #           git-ftp-args: --insecure
-          protocol: ftps
-          port: 2020
+
 
 #       - name: Discord Alert Success
 #         uses: sarisia/actions-status-discord@v1
