@@ -69,7 +69,7 @@ jobs:
         uses: actions/cache@v1
         with:
           path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.OS }}-build-
             ${{ runner.OS }}-
@@ -87,16 +87,16 @@ jobs:
           local-dir: ./webtoon/
           git-ftp-args: --insecure
 
-      - name: Discord Alert Success
-        uses: sarisia/actions-status-discord@v1
-        if: success()
-        with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          description: "🚀 수정과가 배포되었습니다! https://snm.itsw.info"
+#       - name: Discord Alert Success
+#         uses: sarisia/actions-status-discord@v1
+#         if: success()
+#         with:
+#           webhook: ${{ secrets.DISCORD_WEBHOOK }}
+#           description: "🚀 수정과가 배포되었습니다! https://snm.itsw.info"
 
-      - name: Discord Alert Failure
-        uses: sarisia/actions-status-discord@v1
-        if: failure()
-        with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          description: "🔥 수정과 배포를 실패하였습니다."
+#       - name: Discord Alert Failure
+#         uses: sarisia/actions-status-discord@v1
+#         if: failure()
+#         with:
+#           webhook: ${{ secrets.DISCORD_WEBHOOK }}
+#           description: "🔥 수정과 배포를 실패하였습니다."
