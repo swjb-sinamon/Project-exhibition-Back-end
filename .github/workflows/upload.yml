@@ -50,7 +50,7 @@ on:
 # #         run: npm install 
 
 # #     - name: Deploy
-# #         uses: SamKirkland/FTP-Deploy-Action@3.1.1
+# #         uses: SamKirkland/FTP-Deploy-Action@4.0.0
 # #         with:
 # #           ftp-server: ${{ secrets.FTP_HOST_PRODUCTION }}
 # #           ftp-username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
@@ -79,11 +79,11 @@ jobs:
 
 
       - name: Deploy
-        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          ftp-server: ${{ secrets.FTP_HOST_PRODUCTION }}
-          ftp-username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
-          ftp-password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
+          server: ${{ secrets.FTP_HOST_PRODUCTION }}
+          username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
+          password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
           local-dir: ./webtoon/
           git-ftp-args: --insecure
 
