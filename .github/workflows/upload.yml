@@ -5,54 +5,98 @@ on:
     branches:
       - master
 
+# jobs:
+#   deploy-production:
+#     runs-on: ubuntu-18.04
+# #     strategy:
+# #       matrix:
+# #         node-version: [16.x]
+# #         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+#     steps:
+#     - name: 🚚 Get latest code
+#       uses: actions/checkout@v2
+
+#     - name: Use Node.js 16
+#       uses: actions/setup-node@v2
+#       with:
+#         node-version: '16'
+      
+#     - name: 🔨 Build Project
+#       run: |
+#         npm install
+    
+#     - name: 📂 Sync files
+#       uses: SamKirkland/FTP-Deploy-Action@4.0.0
+#       with:
+#         server: ${{ secrets.FTP_HOST_PRODUCTION }}
+#         username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
+#         password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
+# #         local-dir: ./webtoon/
+#         exclude: |
+#           **/.git*
+#           **/.git*/**
+#           **/node_modules/**
+#         port: 2020
+# #       - uses: actions/checkout@v3
+# #       - name: Use Node.js ${{ matrix.node-version }}
+# #         uses: actions/setup-node@v3
+# #         with:
+# #           node-version: ${{ matrix.node-version }}
+# #           cache: "npm"
+
+    
+# #       - name: Install modules
+# #         run: npm install 
+
+# #     - name: Deploy
+# #         uses: SamKirkland/FTP-Deploy-Action@3.1.1
+# #         with:
+# #           ftp-server: ${{ secrets.FTP_HOST_PRODUCTION }}
+# #           ftp-username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
+# #           ftp-password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
+# #           local-dir: ./home/webtoon/webtoon/
+
+
 jobs:
   deploy-production:
     runs-on: ubuntu-18.04
-#     strategy:
-#       matrix:
-#         node-version: [16.x]
-#         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v2
+      - name: Checkout source code.
+        uses: actions/checkout@master
 
-    - name: Use Node.js 16
-      uses: actions/setup-node@v2
-      with:
-        node-version: '16'
-      
-    - name: 🔨 Build Project
-      run: |
-        npm install
-    
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
-      with:
-        server: ${{ secrets.FTP_HOST_PRODUCTION }}
-        username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
-        password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
-#         local-dir: ./webtoon/
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-        port: 2020
-#       - uses: actions/checkout@v3
-#       - name: Use Node.js ${{ matrix.node-version }}
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: ${{ matrix.node-version }}
-#           cache: "npm"
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-
+      - name: Install
+        run: npm install
 
-    
-#       - name: Install modules
-#         run: npm install 
 
-#     - name: Deploy
-#         uses: SamKirkland/FTP-Deploy-Action@3.1.1
-#         with:
-#           ftp-server: ${{ secrets.FTP_HOST_PRODUCTION }}
-#           ftp-username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
-#           ftp-password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
-#           local-dir: ./home/webtoon/webtoon/
+
+      - name: Deploy
+        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        with:
+          ftp-server: ${{ secrets.FTP_HOST_PRODUCTION }}
+          ftp-username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
+          ftp-password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
+          local-dir: ./webtoon/
+          git-ftp-args: --insecure
+
+      - name: Discord Alert Success
+        uses: sarisia/actions-status-discord@v1
+        if: success()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          description: "🚀 수정과가 배포되었습니다! https://snm.itsw.info"
+
+      - name: Discord Alert Failure
+        uses: sarisia/actions-status-discord@v1
+        if: failure()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          description: "🔥 수정과 배포를 실패하였습니다."
