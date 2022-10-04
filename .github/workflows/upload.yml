@@ -61,31 +61,44 @@ on:
 jobs:
   deploy-production:
     runs-on: ubuntu-18.04
+#     steps:
+#       - name: Checkout source code.
+#         uses: actions/checkout@master
+
+#       - name: Cache node modules
+#         uses: actions/cache@v1
+#         with:
+#           path: node_modules
+#           key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+#           restore-keys: |
+#             ${{ runner.OS }}-build-
+#             ${{ runner.OS }}-
+#       - name: Install
+#         run: npm install
     steps:
-      - name: Checkout source code.
-        uses: actions/checkout@master
-
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
-      - name: Install
-        run: npm install
-
-      - uses: actions/checkout@master
-      - name: copy file via ssh password
-        uses: appleboy/scp-action@master
+      - name: Deploy
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.FTP_HOST_PRODUCTION }}
           username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
           password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
+#           key: ${{ secrets.REMOTE_SSH_KEY }}
           port: 2020
-          source: ""
-          target: ""
+          script: |
+            cd /home/ubuntu/ezhome
+            sudo git pull
+            sudo npm install
+            pm2 reload all
+#       - uses: actions/checkout@master
+#       - name: copy file via ssh password
+#         uses: appleboy/scp-action@master
+#         with:
+#           host: ${{ secrets.FTP_HOST_PRODUCTION }}
+#           username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
+#           password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
+#           port: 2020
+#           source: ""
+#           target: ""
 
 
 #       - name: Deploy
