@@ -84,8 +84,8 @@ jobs:
           username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
           password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
           port: 2020
-          source: "/"
-          target: "/"
+          source: ""
+          target: ""
 
 
 #       - name: Deploy
