@@ -84,7 +84,7 @@ jobs:
           server: ${{ secrets.FTP_HOST_PRODUCTION }}
           username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
           password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
-          local-dir: ./webtoon/
+#           local-dir: ./webtoon/
           git-ftp-args: --insecure
 
 #       - name: Discord Alert Success
