@@ -76,18 +76,28 @@ jobs:
       - name: Install
         run: npm install
 
-
-
-      - name: Deploy
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      - uses: actions/checkout@master
+      - name: copy file via ssh password
+        uses: appleboy/scp-action@master
         with:
-          server: ${{ secrets.FTP_HOST_PRODUCTION }}
+          host: ${{ secrets.FTP_HOST_PRODUCTION }}
           username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
           password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
+          port: 2020
+          source: "/"
+          target: "/"
+
+
+#       - name: Deploy
+#         uses: SamKirkland/FTP-Deploy-Action@4.0.0
+#         with:
+#           server: ${{ secrets.FTP_HOST_PRODUCTION }}
+#           username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
+#           password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
+#           exclude: |
+#             **/.git*
+#             **/.git*/**
+#             **/node_modules/**
 #           local-dir: ./webtoon/
 #           git-ftp-args: --insecure
 
