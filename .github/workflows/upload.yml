@@ -8,10 +8,11 @@ on:
 jobs:
   deploy-production:
     runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    timeout-minutes: 15
+#     strategy:
+#       matrix:
+#         node-version: [16.x]
+#         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - name: 🚚 Get latest code
