@@ -32,4 +32,3 @@ jobs:
           ftp-username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
           ftp-password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
           local-dir: ../home/webtoon/webtoon
-          git-ftp-args: --insecure
