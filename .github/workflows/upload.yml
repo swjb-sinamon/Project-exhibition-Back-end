@@ -49,11 +49,11 @@ jobs:
             **/.git*/**
             **/node_modules/**
           
-      - name: pm2
-        run: pm2 restart server
+#       - name: pm2
+#         run: pm2 restart server
         
-      - name: nginx 
-        run: sudo systemctl restart nginx    
+#       - name: nginx 
+#         run: sudo systemctl restart nginx    
         
 
 
