@@ -83,7 +83,7 @@ jobs:
           host: ${{ secrets.FTP_HOST_PRODUCTION }}
           username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
           password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
-#           key: ${{ secrets.KEY }}
+          key: ${{ secrets.KEY }}
 #           key: ${{ secrets.REMOTE_SSH_KEY }}
           port: 2020
           script: whoami
