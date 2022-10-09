@@ -25,7 +25,7 @@ header {
     width: 100%;
     height: 100px;
     float: left;
-    box-shadow: 2px 4px 7px 0px rgba(0, 0,0,0.42);
+    box-shadow: 3px 4px 7px rgba(149, 157, 160, 0.27);
 }
 
 header a {
@@ -40,6 +40,10 @@ header a {
 
     display: flex;
     align-items: center;
+}
+
+header i {
+    font-size: 25px;
 }
 
 header h2 {
@@ -91,16 +95,30 @@ footer .box {
     width: 50vw;
     height: 100%;
     margin: 0 auto;
-    
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
 footer .info {
+    float: left;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+footer .info h4 {
+    float: left;
+} 
+
+footer .info p {
+    float: left;
+    margin-left: 10px;
+}
+
+/* footer .info {
     display: flex;
     align-items: center;
     justify-content: space-around;
-}
+} */
 
 #menu-bar{
     position: fixed;
@@ -165,4 +183,9 @@ footer .info {
     border-radius: 50%;
     background-color: #0075E8;
     box-shadow: 2px 4px 7px 0px rgba(0, 0,0,0.42),2px 3px 10px 0px rgba(167, 207, 246,1) inset, -3px -1px 5px 0px rgba(53, 77, 101, 0.42) inset;
+}
+
+.bottom-button i{
+    color: #fff;
+    font-size: 33px;
 }
