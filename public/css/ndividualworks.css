@@ -112,6 +112,7 @@ footer .info h4 {
 footer .info p {
     float: left;
     margin-left: 10px;
+    margin-top: 3px;
 }
 
 /* footer .info {
