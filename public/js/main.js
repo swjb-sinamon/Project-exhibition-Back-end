@@ -58,7 +58,7 @@ $(document).ready(function(){
   function playSlide(){
     $(slide[sno]).animate({
         left:'-80vw'
-    },1000, function(){
+    },2000, function(){
         $(this).css({left:'80vw'});
     });
 
@@ -69,12 +69,12 @@ $(document).ready(function(){
 
     $(slide[sno]).animate({
         left:'0px'
-    },1000);
+    },2000);
   }
 
   setInterval(function(){
       playSlide();
-  },2000);
+  },2000,1000);
 })
 
 const year = document.querySelectorAll('.yaer');
