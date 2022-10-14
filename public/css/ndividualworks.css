@@ -25,12 +25,17 @@ header {
     width: 100%;
     height: 100px;
     float: left;
-    box-shadow: 2px 4px 7px 0px rgba(0, 0,0,0.42);
+    box-shadow: 3px 4px 7px rgba(149, 157, 160, 0.27);
 }
 
 header a {
     display: flex;
     align-items: center;
+}
+
+header a h2 {
+    font-style: bold;
+    font-size: 28px;
 }
 
 .back {
@@ -40,6 +45,10 @@ header a {
 
     display: flex;
     align-items: center;
+}
+
+header i {
+    font-size: 25px;
 }
 
 header h2 {
@@ -70,8 +79,9 @@ header h2 {
 }
 
 .pic-box {
-    width: 100%;
+    width: 85%;
     padding-top: 30px;
+    margin: 0 auto;
 }
 
 .pic-box img {
@@ -91,23 +101,38 @@ footer .box {
     width: 50vw;
     height: 100%;
     margin: 0 auto;
-    
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
 footer .info {
+    float: left;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+footer .info h4 {
+    float: left;
+} 
+
+footer .info p {
+    float: left;
+    margin-left: 10px;
+    margin-top: 3px;
+}
+
+/* footer .info {
     display: flex;
     align-items: center;
     justify-content: space-around;
-}
+} */
 
 #menu-bar{
     position: fixed;
-    right: 10px;
+    right: 20px;
     bottom: 90px;
     width: 170px;
-    height: 140px;
+    height: 150px;
     z-index: 999;
     border: 0;
     border-radius:15px;
@@ -124,9 +149,9 @@ footer .info {
 #menu-bar li {
     width: 100%;
     height: 30px;
-    font-size: 15px;
+    font-size: 18px;
     line-height: 30px;
-    margin-left: 10px;
+    margin-left: 15px;
     position: relative;
 }
   
@@ -139,13 +164,14 @@ footer .info {
   
 #menu-bar li input {
     width: 80%;
-    height: 20px;
+    height: 26px;
     margin: 0 auto;
+    padding: 0px 1px 3px 1px;
 }
 
 .bottom-button {
     position: fixed;
-    right: 25px;
+    right: 28px;
     bottom: 25px;
     z-index: 999;
 }
@@ -164,5 +190,10 @@ footer .info {
     border: 0;
     border-radius: 50%;
     background-color: #0075E8;
-    box-shadow: 2px 4px 7px 0px rgba(0, 0,0,0.42),2px 3px 10px 0px rgba(167, 207, 246,1) inset, -3px -1px 5px 0px rgba(53, 77, 101, 0.42) inset;
+    box-shadow: 2px 3px 6px 0px rgba(0, 0,0,0.42),1px 2px 7px 0px rgba(167, 207, 246,1) inset, -3px -1px 5px 0px rgba(53, 77, 101, 0.42) inset;
+}
+
+.bottom-button i{
+    color: #fff;
+    font-size: 33px;
 }
